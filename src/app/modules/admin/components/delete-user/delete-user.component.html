@@ -1,0 +1,28 @@
+<!-- Delete Modal HTML -->
+<div>
+  <div class="modal-dialog my-0">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Delete User</h4>
+        <button
+          type="button"
+          class="close"
+          aria-hidden="true"
+          (click)="onCancel()"
+        >
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete these Records?</p>
+        <p class="text-warning">
+          <small>This action cannot be undone.</small>
+        </p>
+      </div>
+      <div class="modal-footer">
+        <Button class="btn btn-default" (click)="onCancel()"> Cancel </Button>
+        <Button class="btn btn-danger" (click)="onDelete()">Delete</Button>
+      </div>
+    </div>
+  </div>
+</div>

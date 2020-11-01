@@ -1,1 +1,73 @@
-<p>dashboard works!</p>
+<div class="body">
+  <div class="table-responsive">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Manage <b>Users</b></h2>
+          </div>
+          <div class="col-sm-6">
+            <a class="btn btn-success" (click)="onAddUser()"
+              ><i title="Add" class="material-icons">&#xE147;</i>
+              <span>Add New User</span></a
+            >
+          </div>
+        </div>
+      </div>
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Controls</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ user.first_name }}</td>
+            <td>{{ user.last_name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <a class="edit cursor-pointer" (click)="onUpdateUser(i)">
+                <i class="material-icons" data-toggle="tooltip" title="Edit">
+                  &#xE254;
+                </i>
+              </a>
+              <a class="delete cursor-pointer" (click)="onDeleteUser(i)">
+                <i class="material-icons" data-toggle="tooltip" title="Delete">
+                  &#xE872;
+                </i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="clearfix">
+        <div class="hint-text">
+          Showing <b>{{ users?.length }}</b> out of
+          <b>{{ totalUsers - deletedUsersCount + addedUsersCount }}</b>
+          entries
+        </div>
+        <ul class="pagination">
+          <li class="page-item" [ngClass]="{ disabled: currentPage === 1 }">
+            <a (click)="onPrevClicked()">Previous</a>
+          </li>
+          <li
+            *ngFor="let page of totalPagesArr"
+            class="page-item"
+            [ngClass]="{ active: page === currentPage }"
+          >
+            <a (click)="onPageClicked(page)" class="page-link">{{ page }}</a>
+          </li>
+          <li
+            class="page-item"
+            [ngClass]="{ disabled: currentPage === totalPages }"
+          >
+            <a (click)="onNextClicked()" class="page-link">Next</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
