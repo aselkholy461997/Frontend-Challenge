@@ -1,10 +1,16 @@
+import { SharedModule } from './../shared/shared.module';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { DashboardComponent } from './views/dashboard/dashboard.component';
+
 import { AdminRoutingModule } from './admin-routing.module';
 
+import { AdminApiService } from './services/admin-api.service';
+
+import { DashboardComponent } from './views/dashboard/dashboard.component';
+import { UserDetailsComponent } from './components/user-details/user-details.component';
+
 @NgModule({
-  declarations: [DashboardComponent],
-  imports: [CommonModule, AdminRoutingModule],
+  declarations: [DashboardComponent, UserDetailsComponent],
+  imports: [AdminRoutingModule, SharedModule],
+  providers: [AdminApiService],
 })
 export class AdminModule {}
